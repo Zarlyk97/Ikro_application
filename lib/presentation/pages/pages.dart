@@ -1,0 +1,9 @@
+export 'profile/profile_page.dart';
+export 'profile/setting_pages/reference_center/reference_center.dart';
+export 'profile/setting_pages/setting_notification_pages.dart/setting_natification.dart';
+export 'profile/setting_pages/setting_page.dart';
+export 'profile/setting_pages/setting_parameter_page.dart';
+export 'profile/setting_pages/setting_profile.page.dart';
+export 'profile/setting_pages/send_a_review.dart';
+export 'profile/setting_pages/conditions.dart';
+export 'profile/change_avatar.dart';
