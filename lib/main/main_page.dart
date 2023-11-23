@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ikro_account_student1/account_student/pages/lesson_page.dart';
 import 'package:ikro_account_student1/main/home_page.dart';
 import 'package:ikro_account_student1/presentation/pages/pages.dart';
 import 'package:svg_flutter/svg.dart';
@@ -21,7 +22,7 @@ class _MainPageState extends State<MainPage> {
           index: _currentIndex,
           children: const [
             HomePage(),
-            Scaffold(),
+            LessonPage(),
             Scaffold(),
             ProfilePage(),
           ],
