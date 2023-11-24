@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:ikro_account_student1/account_student/pages/letters_page.dart';
 
 class LessonPage2 extends StatelessWidget {
   const LessonPage2({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<String> items = List<String>.generate(10, (i) => '$i');
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
@@ -47,7 +47,7 @@ class LessonPage2 extends StatelessWidget {
                   ),
                   title: const Text(
                     "Киришүү сабагы",
-                    style: const TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white),
                   ),
                   subtitle: const Text(
                     'Араб тамгалары',
@@ -61,7 +61,14 @@ class LessonPage2 extends StatelessWidget {
                     Icons.keyboard_arrow_right,
                     color: Color(0xffC7C7CC),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LettersPage(),
+                      ),
+                    );
+                  },
                 ),
               ),
           ],
