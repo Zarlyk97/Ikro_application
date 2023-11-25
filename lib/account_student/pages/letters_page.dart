@@ -12,34 +12,34 @@ class LettersPage extends StatefulWidget {
 
 class _LettersPageState extends State<LettersPage> {
   final List<String> _images = [
-    'assets/letters/ا.svg',
-    'assets/letters/ب.svg',
-    'assets/letters/ت.svg',
     'assets/letters/ث.svg',
-    'assets/letters/ج.svg',
-    'assets/letters/ح.svg',
-    'assets/letters/د.svg',
+    'assets/letters/ت.svg',
+    'assets/letters/ب.svg',
+    'assets/letters/ا.svg',
     'assets/letters/ذ.svg',
-    'assets/letters/ر.svg',
-    'assets/letters/ز.svg',
-    'assets/letters/س.svg',
+    'assets/letters/د.svg',
+    'assets/letters/ح.svg',
+    'assets/letters/ج.svg',
     'assets/letters/ش.svg',
-    'assets/letters/_ ص .svg',
-    'assets/letters/ض.svg',
-    'assets/letters/ط .svg',
+    'assets/letters/س.svg',
+    'assets/letters/ز.svg',
+    'assets/letters/ر.svg',
     'assets/letters/ظ.svg',
-    'assets/letters/ع .svg',
-    'assets/letters/غ.svg',
-    'assets/letters/ف.svg',
+    'assets/letters/ط .svg',
+    'assets/letters/ض.svg',
+    'assets/letters/_ ص .svg',
     'assets/letters/ق.svg',
-    'assets/letters/ك.svg',
-    'assets/letters/ل.svg',
-    'assets/letters/م.svg',
+    'assets/letters/ف.svg',
+    'assets/letters/غ.svg',
+    'assets/letters/ع .svg',
     'assets/letters/ن.svg',
+    'assets/letters/م.svg',
+    'assets/letters/ل.svg',
+    'assets/letters/ك.svg',
+    'assets/letters/ي.svg',
+    'assets/letters/لا.svg',
     'assets/letters/ه.svg',
     'assets/letters/و.svg',
-    'assets/letters/لا.svg',
-    'assets/letters/ي.svg',
   ];
   List<bool> selected = [
     true,
@@ -70,6 +70,66 @@ class _LettersPageState extends State<LettersPage> {
     true,
     true,
     true
+  ];
+  final List<String> texts = [
+    'са',
+    'та',
+    'ба',
+    'алиф',
+    'зал',
+    'дал',
+    'ха',
+    'жим',
+    'шин',
+    'син',
+    'за',
+    'ро',
+    'зо',
+    'то',
+    'дод',
+    'сод',
+    'коф',
+    'фа',
+    'гойн',
+    'айн',
+    'нун',
+    'мим',
+    'лам',
+    'каф',
+    'йа',
+    'ламалиф',
+    'ха',
+    'вау',
+  ];
+  final List<String> text = [
+    '(с)',
+    '(т)',
+    '(б)',
+    '(а)',
+    '(з)',
+    '(д)',
+    '(х)',
+    '(ж)',
+    '(ш)',
+    '(с)',
+    '(з)',
+    '(р)',
+    '(з)',
+    '(т)',
+    '(д)',
+    '(с)',
+    '(к)',
+    '(ф)',
+    '(г)',
+    '(а)',
+    '(н)',
+    '(м)',
+    '(л)',
+    '(к)',
+    '(й)',
+    '(ла)',
+    '(х)',
+    '(в)',
   ];
   @override
   Widget build(BuildContext context) {
@@ -125,6 +185,80 @@ class _LettersPageState extends State<LettersPage> {
                     },
                     child: Card(
                       shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(5),
+                        ),
+                        side: BorderSide(
+                          color: const Color(0xFF236681),
+                        ),
+                      ),
+                      color: selected[index]
+                          ? const Color(0xFF236681)
+                          : Colors.white,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            _images[index],
+
+                            // ignore: deprecated_member_use
+                            color: selected[index]
+                                ? Colors.white
+                                : const Color(0xFF236681),
+                          ),
+                          const SizedBox(
+                            height: 2,
+                          ),
+                          Wrap(alignment: WrapAlignment.center, children: [
+                            Text(
+                              texts[index],
+                              style: TextStyle(
+                                color: selected[index]
+                                    ? Colors.white
+                                    : const Color(0xFF236681),
+                                fontSize: 17,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            Text(
+                              text[index],
+                              style: const TextStyle(
+                                color: Color(0xFFFF9500),
+                                fontSize: 17,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ])
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const CustomWidget(
+                text: 'Жоон тамгалар',
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: 7,
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 100),
+                itemBuilder: (contex, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selected[index] = !selected[index];
+                      });
+                    },
+                    child: Card(
+                      shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(5),
                           ),
@@ -135,16 +269,34 @@ class _LettersPageState extends State<LettersPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SvgPicture.asset(_images[index]),
-                          Text(
-                            'ffm',
-                            style: TextStyle(
-                              color: selected[index]
-                                  ? Colors.white
-                                  : const Color(0xFF236681),
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                            ),
+                          SvgPicture.asset(
+                            'assets/letters/ا.svg',
+                            color: selected[index]
+                                ? Colors.white
+                                : const Color(0xFF236681),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'алиф',
+                                style: TextStyle(
+                                  color: selected[index]
+                                      ? Colors.white
+                                      : const Color(0xFF236681),
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              const Text(
+                                '(а)',
+                                style: TextStyle(
+                                  color: const Color(0xFFFF9500),
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
                           )
                         ],
                       ),
@@ -153,7 +305,76 @@ class _LettersPageState extends State<LettersPage> {
                 },
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
+              ),
+              const CustomWidget(
+                text: 'Ичке тамаглар',
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: 12,
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 100),
+                itemBuilder: (contex, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selected[index] = !selected[index];
+                      });
+                    },
+                    child: Card(
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(5),
+                          ),
+                          side: BorderSide(color: const Color(0xFF236681))),
+                      color: selected[index]
+                          ? const Color(0xFF236681)
+                          : Colors.white,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            'assets/letters/ا.svg',
+                            color: selected[index]
+                                ? Colors.white
+                                : const Color(0xFF236681),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'алиф',
+                                style: TextStyle(
+                                  color: selected[index]
+                                      ? Colors.white
+                                      : const Color(0xFF236681),
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              const Text(
+                                '(а)',
+                                style: TextStyle(
+                                  color: const Color(0xFFFF9500),
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(
+                height: 20,
               ),
               GestureDetector(
                 onTap: () {
