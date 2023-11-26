@@ -291,7 +291,7 @@ class _LettersPageState extends State<LettersPage> {
                               const Text(
                                 '(а)',
                                 style: TextStyle(
-                                  color: const Color(0xFFFF9500),
+                                  color: Color(0xFFFF9500),
                                   fontSize: 17,
                                   fontWeight: FontWeight.w400,
                                 ),

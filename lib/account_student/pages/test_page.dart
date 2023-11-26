@@ -9,12 +9,12 @@ class TextPage extends StatefulWidget {
 
 class _TextPageState extends State<TextPage> {
   final List<String> _images = [
-    'assets/icons_exercise/bx-highlight.png',
-    'assets/icons_exercise/bx-microphone.png',
-    'assets/icons_exercise/bx-spreadsheet.png',
-    'assets/icons_exercise/bx-detail.png',
-    'assets/icons_exercise/bx-volume-full.png',
-    'assets/icons_exercise/bx-grid-vertical.png',
+    'assets/icons_exercise/pen.png',
+    'assets/icons_exercise/microphone.png',
+    'assets/icons_exercise/spreadsheet.png',
+    'assets/icons_exercise/detail.png',
+    'assets/icons_exercise/volume.png',
+    'assets/icons_exercise/grid_vertical.png',
   ];
   final List<String> _texts = [
     'Жазуу',
