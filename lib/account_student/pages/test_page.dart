@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ikro_account_student1/test_page/find_a_couple.dart';
 
 class TextPage extends StatefulWidget {
   const TextPage({super.key});
@@ -59,7 +60,14 @@ class _TextPageState extends State<TextPage> {
                     childAspectRatio: 3 / 2),
                 itemBuilder: (contex, index) {
                   return GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      if (index == 5) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const FindACouplePage()));
+                      }
+                    },
                     child: Container(
                       margin: const EdgeInsets.symmetric(vertical: 5),
                       decoration: BoxDecoration(
