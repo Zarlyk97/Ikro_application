@@ -8,20 +8,32 @@ class FindACouplePage extends StatefulWidget {
 }
 
 class _FindACouplePageState extends State<FindACouplePage> {
-  List<Word> words = [];
-  @override
-  void initState() {
-    super.initState();
-    words.add(Word(arabic: 'مرحبًا', kyrgyz: 'мерхаба'));
-    words.add(Word(arabic: 'شراء', kyrgyz: 'салах'));
-    words.add(Word(arabic: 'القرآن', kyrgyz: 'куран'));
-    words.add(Word(arabic: 'مرحبًا', kyrgyz: 'мерхаба'));
-    words.add(Word(arabic: 'مرحبًا', kyrgyz: 'мерхаба'));
-    words.add(Word(arabic: 'مرحبًا', kyrgyz: 'мерхаба'));
-  }
+  List<String> wordList1 = [
+    'مرحبًا',
+    'القرآن',
+    'مرحبًا',
+    'القرآن',
+    'مرحبًا',
+  ];
+  List<String> wordList2 = [
+    'мерхаба',
+    'куран',
+    'мерхаба',
+    'куран',
+    'мерхаба',
+  ];
+  int correctCount = 0;
+  int wrongCount = 0;
+  int currentIndex = 0;
+  int selectedIndex = 0;
+  List<Color> colors = [Colors.white, Colors.white, Colors.white];
 
   @override
   Widget build(BuildContext context) {
+    //   List<bool> isCorrect = List.filled(words.length, false);
+    //    int correct = isCorrect.where((element) => element).length;
+    //  int wrong = isCorrect.where((element) =>! element).length;
+    //  double progress  = correct/ words.length;
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
@@ -37,15 +49,16 @@ class _FindACouplePageState extends State<FindACouplePage> {
         centerTitle: true,
         actions: [
           TextButton(
-              onPressed: () {},
-              child: const Text(
-                'Сынак',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 17,
-                  fontWeight: FontWeight.w400,
-                ),
-              ))
+            onPressed: () {},
+            child: const Text(
+              'Сынак',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
         ],
       ),
       body: Padding(
@@ -58,12 +71,13 @@ class _FindACouplePageState extends State<FindACouplePage> {
         child: Column(
           children: [
             const LinearProgressIndicator(
-              color: Color(0xFF236681),
-              value: 100,
-            ),
+                color: Color(0xFF236681),
+                value: 100 // correctCount / (correctCount + wrongCount),
+                ),
             const SizedBox(
               height: 10,
             ),
+
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -115,61 +129,137 @@ class _FindACouplePageState extends State<FindACouplePage> {
             const SizedBox(
               height: 63,
             ),
-            Expanded(
-              child: GridView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: words.length,
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 220,
-                    crossAxisSpacing: 20,
-                    childAspectRatio: 3.5 / 2),
-                itemBuilder: (contex, index) {
-                  var word = words[index];
-                  return GestureDetector(
-                    onTap: () {},
-                    child: Card(
-                      color: Colors.white,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                        side: BorderSide(
-                          color: Color(0xFF236681),
-                        ),
-                      ),
+            for (int i = 0; i < wordList2.length; i++)
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      selectWord(i);
+                    },
+                    child: Container(
                       margin: const EdgeInsets.symmetric(vertical: 10),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            word.arabic,
-                            style: const TextStyle(
-                              color: Color(0xFF236681),
-                              fontSize: 17,
-                              fontWeight: FontWeight.w400,
-                            ),
+                      height: 80,
+                      width: 166,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: const Color(0xFF236681),
                           ),
-                        ],
-                      ),
+                          borderRadius: BorderRadius.circular(10),
+                          color: colors[selectedIndex = 0]),
+                      child: Center(
+                          child: Text(
+                        wordList1[i],
+                        style: const TextStyle(
+                          color: Color(0xFF236681),
+                          fontSize: 28,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      )),
                     ),
-                  );
-                },
-              ),
-            ),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      selectWord(i);
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(vertical: 10),
+                      height: 80,
+                      width: 166,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: const Color(0xFF236681),
+                          ),
+                          borderRadius: BorderRadius.circular(10),
+                          color: colors[selectedIndex = 1]),
+                      child: Center(
+                          child: Text(
+                        wordList2[i],
+                        style: const TextStyle(
+                          color: Color(0xFF236681),
+                          fontSize: 25,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      )),
+                    ),
+                  ),
+                ],
+              )
+            // Expanded(
+            //   child: GridView.builder(
+            //     physics: const NeverScrollableScrollPhysics(),
+            //     shrinkWrap: true,
+            //     itemCount: words.length,
+            //     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            //       maxCrossAxisExtent: 220,
+            //       crossAxisSpacing: 20,
+            //       childAspectRatio: 3.5 / 2,
+            //     ),
+            //     itemBuilder: (contex, index) {
+            //       return GestureDetector(
+            //         onTap: () {},
+            //         child: Card(
+            //           color: Colors.white,
+            //           shape: const RoundedRectangleBorder(
+            //             borderRadius: BorderRadius.all(
+            //               Radius.circular(10),
+            //             ),
+            //             side: BorderSide(
+            //               color: Color(0xFF236681),
+            //             ),
+            //           ),
+            //           margin: const EdgeInsets.symmetric(vertical: 10),
+            //           child: Column(
+            //             mainAxisAlignment: MainAxisAlignment.center,
+            //             children: [
+            //               Text(
+            //                 words[index],
+            //                 style: const TextStyle(
+            //                   color: Color(0xFF236681),
+            //                   fontSize: 17,
+            //                   fontWeight: FontWeight.w400,
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //       );
+            //     },
+            //   ),
+            // ),
           ],
         ),
       ),
     );
   }
-}
 
-class Word {
-  final String arabic;
-  final String kyrgyz;
+  void selectWord(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+    if (wordList1[selectedIndex] == wordList2[selectedIndex]) {
+      colors[index] = Colors.green;
+      correctCount++;
+      selectedIndex++;
+      if (selectedIndex == wordList1.length) {}
+    } else {
+      colors[selectedIndex] = Colors.red;
+      wrongCount++;
+    }
+  }
 
-  Word({
-    required this.arabic,
-    required this.kyrgyz,
-  });
+  void checkAnswer(int userchoiceIndex) {
+    if (wordList1[currentIndex] == wordList2[userchoiceIndex]) {
+      setState(() {
+        correctCount++;
+        currentIndex++;
+      });
+    } else {
+      setState(() {
+        wrongCount++;
+      });
+    }
+  }
 }
