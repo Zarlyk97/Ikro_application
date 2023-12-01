@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ikro_account_student1/account_student/widgets/progress_widget.dart';
 
 class FindACouplePage extends StatefulWidget {
   const FindACouplePage({super.key});
@@ -77,54 +78,8 @@ class _FindACouplePageState extends State<FindACouplePage> {
               const SizedBox(
                 height: 10,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.done,
-                        size: 16,
-                        color: Colors.green,
-                      ),
-                      Text(':$correctCount'),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      const Icon(
-                        Icons.clear,
-                        size: 16,
-                        color: Colors.red,
-                      ),
-                      Text(':$wrongCount'),
-                    ],
-                  ),
-                  const Row(
-                    children: [
-                      Icon(
-                        Icons.favorite_border_outlined,
-                        size: 24,
-                        color: Colors.grey,
-                      ),
-                      Icon(
-                        Icons.favorite_border_outlined,
-                        size: 24,
-                        color: Colors.red,
-                      ),
-                      Icon(
-                        Icons.favorite_border_outlined,
-                        size: 24,
-                        color: Colors.red,
-                      ),
-                    ],
-                  ),
-                  const Icon(
-                    Icons.feedback_outlined,
-                    color: Color(0xFF236681),
-                    size: 22,
-                  )
-                ],
-              ),
+              ProgressWidget(
+                  correctCount: correctCount, wrongCount: wrongCount),
               const SizedBox(
                 height: 63,
               ),
