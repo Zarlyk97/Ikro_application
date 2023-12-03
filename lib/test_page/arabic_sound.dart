@@ -45,7 +45,7 @@ class _ArabicSoundState extends State<ArabicSound> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             const LinearProgressIndicator(
@@ -65,15 +65,21 @@ class _ArabicSoundState extends State<ArabicSound> {
             Row(
               children: [
                 VolumeWidget(
-                  child: SvgPicture.asset(
-                    'assets/icons/volumeLittle.svg',
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(
+                      'assets/icons/volumeLittle.svg',
+                    ),
                   ),
                 ),
                 const Gap(20),
                 VolumeWidget(
-                  child: SvgPicture.asset(
-                    'assets/icons/Turtle.svg',
-                    fit: BoxFit.contain,
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: SvgPicture.asset(
+                      'assets/icons/Turtle.svg',
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 )
               ],
@@ -87,7 +93,7 @@ class _ArabicSoundState extends State<ArabicSound> {
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     margin: const EdgeInsets.symmetric(vertical: 10),
-                    width: 353,
+                    width: double.infinity,
                     height: 80,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),

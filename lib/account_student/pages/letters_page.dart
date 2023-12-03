@@ -41,36 +41,7 @@ class _LettersPageState extends State<LettersPage> {
     'assets/letters/ه.svg',
     'assets/letters/و.svg',
   ];
-  List<bool> selected = [
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true
-  ];
+  List<bool> selected = List.generate(58, (index) => true);
   final List<String> texts = [
     'са',
     'та',
@@ -164,12 +135,8 @@ class _LettersPageState extends State<LettersPage> {
           padding: const EdgeInsets.only(left: 15, top: 20, right: 15),
           child: Column(
             children: [
-              const CustomWidget(
-                text: 'Алфавиттер',
-              ),
-              const SizedBox(
-                height: 20,
-              ),
+              const CustomWidget(text: 'Алфавиттер'),
+              const SizedBox(height: 20),
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -235,12 +202,8 @@ class _LettersPageState extends State<LettersPage> {
                   );
                 },
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              const CustomWidget(
-                text: 'Жоон тамгалар',
-              ),
+              const SizedBox(height: 20),
+              const CustomWidget(text: 'Жоон тамгалар'),
               const SizedBox(
                 height: 20,
               ),
@@ -304,15 +267,9 @@ class _LettersPageState extends State<LettersPage> {
                   );
                 },
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              const CustomWidget(
-                text: 'Ичке тамаглар',
-              ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
+              const CustomWidget(text: 'Ичке тамаглар'),
+              const SizedBox(height: 20),
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -426,7 +383,7 @@ class _LettersPageState extends State<LettersPage> {
                                     children: [
                                       const Text('    '),
                                       const Text(
-                                        'Эреже',
+                                        '   Эреже',
                                         style: TextStyle(
                                           color: Color(0xFFFF3B30),
                                           fontSize: 17,
@@ -437,16 +394,19 @@ class _LettersPageState extends State<LettersPage> {
                                         onTap: () {
                                           Navigator.pop(context);
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           height: 30,
                                           width: 30,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            color: const Color(0x14747480),
+                                          child: DecoratedBox(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                              color: const Color(0x14747480),
+                                            ),
+                                            child: const Center(
+                                              child: Icon(Icons.clear),
+                                            ),
                                           ),
-                                          child: const Center(
-                                              child: Icon(Icons.clear)),
                                         ),
                                       ),
                                     ],
