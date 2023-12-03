@@ -2,11 +2,11 @@
 import 'package:flutter/material.dart';
 
 class ProgressWidget extends StatefulWidget {
-  const ProgressWidget(
-    Key? key,
-    this.correctCount,
-    this.wrongCount,
-  ) : super(key: key);
+  const ProgressWidget({
+    super.key,
+    required this.correctCount,
+    required this.wrongCount,
+  });
 
   final int correctCount;
   final int wrongCount;
