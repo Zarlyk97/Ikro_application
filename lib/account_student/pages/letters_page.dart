@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ikro_account_student1/account_student/pages/test_page.dart';
 import 'package:ikro_account_student1/account_student/widgets/custom_widget.dart';
+import 'package:ikro_account_student1/account_student/widgets/eleveted_button.dart';
 import 'package:svg_flutter/svg.dart';
 
 class LettersPage extends StatefulWidget {
@@ -41,7 +42,7 @@ class _LettersPageState extends State<LettersPage> {
     'assets/letters/ه.svg',
     'assets/letters/و.svg',
   ];
-  List<bool> selected = List.generate(58, (index) => true);
+  List<bool> selected = List.generate(48, (index) => true);
   final List<String> texts = [
     'са',
     'та',
@@ -119,7 +120,70 @@ class _LettersPageState extends State<LettersPage> {
         centerTitle: true,
         actions: [
           TextButton(
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet<void>(
+                    showDragHandle: true,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    builder: (BuildContext context) {
+                      return SizedBox(
+                          height: 290,
+                          width: double.infinity,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 30, right: 14),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Text('    '),
+                                    const Text(
+                                      ' Эреже',
+                                      style: TextStyle(
+                                        color: Color(0xFFFF3B30),
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: SizedBox(
+                                        height: 30,
+                                        width: 30,
+                                        child: DecoratedBox(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            color: const Color(0x14747480),
+                                          ),
+                                          child: const Center(
+                                            child: Icon(Icons.clear),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                const Text(
+                                  ' Жалпысынан тамгалар  жоон жана ичке болуп экиге бөлүнөт. Кээ бир тамгаларды кырызча туюнтууга мүмкүн болбогондуктан, мугалимдин оозунан гана угуп үйрөнө алабыз. Кара түстөгү тамгалар ичке  кызыл түстөгү тамгалар жоон ал эми жашыл тустогу(лам ) менен (ро) тамгалары кээде жоон кээде ичке окулат.  ',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ));
+                    },
+                    context: context);
+              },
               child: const Text(
                 'эреже',
                 style: TextStyle(
@@ -156,7 +220,7 @@ class _LettersPageState extends State<LettersPage> {
                           Radius.circular(5),
                         ),
                         side: BorderSide(
-                          color: const Color(0xFF236681),
+                          color: Color(0xFF236681),
                         ),
                       ),
                       color: selected[index]
@@ -225,7 +289,7 @@ class _LettersPageState extends State<LettersPage> {
                           borderRadius: BorderRadius.all(
                             Radius.circular(5),
                           ),
-                          side: BorderSide(color: const Color(0xFF236681))),
+                          side: BorderSide(color: Color(0xFF236681))),
                       color: selected[index]
                           ? const Color(0xFF236681)
                           : Colors.white,
@@ -317,7 +381,7 @@ class _LettersPageState extends State<LettersPage> {
                               const Text(
                                 '(а)',
                                 style: TextStyle(
-                                  color: const Color(0xFFFF9500),
+                                  color: Color(0xFFFF9500),
                                   fontSize: 17,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -333,115 +397,18 @@ class _LettersPageState extends State<LettersPage> {
               const SizedBox(
                 height: 20,
               ),
-              GestureDetector(
-                onTap: () {
+              ElevetedButtonWidget(
+                onPressed: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const TextPage()));
+                    context,
+                    MaterialPageRoute(builder: (context) => const TestPage()),
+                  );
                 },
-                child: Container(
-                  width: 350,
-                  height: 56,
-                  padding: const EdgeInsets.symmetric(vertical: 6),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.black),
-                  child: const Center(
-                    child: Text(
-                      'тест',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
+                text: 'Тест',
               ),
               const SizedBox(
                 height: 10,
               ),
-              GestureDetector(
-                onTap: () {
-                  showModalBottomSheet<void>(
-                      showDragHandle: true,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      builder: (BuildContext context) {
-                        return SizedBox(
-                            height: 290,
-                            width: double.infinity,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 30, right: 14),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      const Text('    '),
-                                      const Text(
-                                        '   Эреже',
-                                        style: TextStyle(
-                                          color: Color(0xFFFF3B30),
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: SizedBox(
-                                          height: 30,
-                                          width: 30,
-                                          child: DecoratedBox(
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              color: const Color(0x14747480),
-                                            ),
-                                            child: const Center(
-                                              child: Icon(Icons.clear),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  const Text(
-                                    ' Жалпысынан тамгалар  жоон жана ичке болуп экиге бөлүнөт. Кээ бир тамгаларды кырызча туюнтууга мүмкүн болбогондуктан, мугалимдин оозунан гана угуп үйрөнө алабыз. Кара түстөгү тамгалар ичке  кызыл түстөгү тамгалар жоон ал эми жашыл тустогу(лам ) менен (ро) тамгалары кээде жоон кээде ичке окулат.  ',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ));
-                      },
-                      context: context);
-                },
-                child: Container(
-                  width: 36,
-                  height: 5,
-                  decoration: ShapeDecoration(
-                    color: const Color(0x4C3C3C43),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              )
             ],
           ),
         ),

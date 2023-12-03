@@ -86,29 +86,33 @@ class _ArabicSoundState extends State<ArabicSound> {
             ),
             const Gap(94),
             Image.asset('assets/icons/Frame01.png'),
-            const Gap(80),
+            const Gap(75),
             Expanded(
               child: ListView.builder(
                 itemCount: words.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
+                  return SizedBox(
+                    height: 100,
                     width: double.infinity,
-                    height: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      border: Border.all(
-                        color: const Color(0xFF236681),
-                      ),
-                    ),
-                    child: Center(
-                      child: Text(
-                        words[index],
-                        style: const TextStyle(
-                          color: Color(0xFF236681),
-                          fontSize: 36,
-                          fontWeight: FontWeight.w400,
+                    child: Card(
+                      margin: const EdgeInsets.all(10),
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                          border: Border.all(
+                            color: const Color(0xFF236681),
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            words[index],
+                            style: const TextStyle(
+                              color: Color(0xFF236681),
+                              fontSize: 36,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
                         ),
                       ),
                     ),

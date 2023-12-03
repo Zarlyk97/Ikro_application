@@ -47,105 +47,112 @@ class _CardPageState extends State<CardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          foregroundColor: Colors.white,
-          backgroundColor: const Color(0xFF236681),
-          title: const Text(
-            'Карточка',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 17,
-              fontWeight: FontWeight.w600,
+      appBar: AppBar(
+        foregroundColor: Colors.white,
+        backgroundColor: const Color(0xFF236681),
+        title: const Text(
+          'Карточка',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 17,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        centerTitle: true,
+        actions: [
+          TextButton(
+            onPressed: () {},
+            child: const Text(
+              'Сынак',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+                fontWeight: FontWeight.w400,
+              ),
             ),
           ),
-          centerTitle: true,
-          actions: [
-            TextButton(
-              onPressed: () {},
-              child: const Text(
-                'Сынак',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 17,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            const LinearProgressIndicator(
+              value: 100,
+              color: Color(0xFF236681),
             ),
-          ],
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              const LinearProgressIndicator(
-                value: 100,
-                color: Color(0xFF236681),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              ProgressWidget(
-                correctCount: correctCount,
-                wrongCount: wrongCount,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                children: [
-                  VolumeWidget(
+            const SizedBox(
+              height: 10,
+            ),
+            ProgressWidget(
+              correctCount: correctCount,
+              wrongCount: wrongCount,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                VolumeWidget(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: SvgPicture.asset(
                       'assets/icons/volumeLittle.svg',
                     ),
                   ),
-                  const Gap(20),
-                  VolumeWidget(
+                ),
+                const Gap(20),
+                VolumeWidget(
+                  child: Padding(
+                    padding: const EdgeInsets.all(5),
                     child: SvgPicture.asset(
                       'assets/icons/Turtle.svg',
                     ),
                   ),
-                ],
-              ),
-              const Gap(20),
-              Expanded(
-                child: GridView.builder(
-                  //  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: _images.length,
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 100),
-                  itemBuilder: (contex, index) {
-                    return GestureDetector(
-                      onTap: () {},
-                      child: Card(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(5),
-                          ),
-                          side: BorderSide(
-                            color: const Color(0xFF236681),
-                          ),
+                ),
+              ],
+            ),
+            const Gap(20),
+            Expanded(
+              child: GridView.builder(
+                //  physics: const NeverScrollableScrollPhysics(),
+                itemCount: _images.length,
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 100),
+                itemBuilder: (contex, index) {
+                  return GestureDetector(
+                    onTap: () {},
+                    child: Card(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(5),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              _images[index],
-
-                              // ignore: deprecated_member_use
-                              color: const Color(0xFF236681),
-                            ),
-                            const SizedBox(
-                              height: 2,
-                            ),
-                          ],
+                        side: BorderSide(
+                          color: Color(0xFF236681),
                         ),
                       ),
-                    );
-                  },
-                ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            _images[index],
+
+                            // ignore: deprecated_member_use
+                            color: const Color(0xFF236681),
+                          ),
+                          const SizedBox(
+                            height: 2,
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
               ),
-            ],
-          ),
-        ));
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

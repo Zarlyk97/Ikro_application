@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:ikro_account_student1/account_student/widgets/eleveted_button.dart';
 import 'package:ikro_account_student1/test_page/arabic_sound.dart';
 import 'package:ikro_account_student1/test_page/card_page.dart';
 import 'package:ikro_account_student1/test_page/find_a_couple.dart';
 
-class TextPage extends StatefulWidget {
-  const TextPage({super.key});
+class TestPage extends StatefulWidget {
+  const TestPage({super.key});
 
   @override
-  State<TextPage> createState() => _TextPageState();
+  State<TestPage> createState() => _TestPageState();
 }
 
-class _TextPageState extends State<TextPage> {
+class _TestPageState extends State<TestPage> {
   final List<String> _images = [
     'assets/icons_exercise/pen.png',
     'assets/icons_exercise/microphone.png',
@@ -45,12 +46,7 @@ class _TextPageState extends State<TextPage> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(
-          top: 26,
-          right: 26,
-          left: 26,
-          bottom: 220,
-        ),
+        padding: const EdgeInsets.fromLTRB(26, 26, 26, 200),
         child: Column(
           children: [
             Expanded(
@@ -59,6 +55,7 @@ class _TextPageState extends State<TextPage> {
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 220,
                     crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
                     childAspectRatio: 3 / 2),
                 itemBuilder: (contex, index) {
                   return GestureDetector(
@@ -82,25 +79,28 @@ class _TextPageState extends State<TextPage> {
                                 builder: (context) => const CardPage()));
                       }
                     },
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color(0xFF236681),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(_images[index]),
-                          Text(
-                            _texts[index],
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.w400,
+                    child: SizedBox(
+                      width: 166,
+                      height: 110,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: const Color(0xFF236681),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(_images[index]),
+                            Text(
+                              _texts[index],
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 17,
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
-                          )
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );
@@ -110,23 +110,10 @@ class _TextPageState extends State<TextPage> {
             const SizedBox(
               height: 30,
             ),
-            Container(
-              width: 350,
-              height: 56,
-              padding: const EdgeInsets.symmetric(vertical: 6),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12), color: Colors.black),
-              child: const Center(
-                child: Text(
-                  'Рейтинг',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ),
+            ElevetedButtonWidget(
+              onPressed: () {},
+              text: 'Рейтинг',
+            )
           ],
         ),
       ),
