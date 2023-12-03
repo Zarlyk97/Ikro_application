@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ikro_account_student1/test_page/arabic_sound.dart';
+import 'package:ikro_account_student1/test_page/card_page.dart';
 import 'package:ikro_account_student1/test_page/find_a_couple.dart';
 
 class TextPage extends StatefulWidget {
@@ -73,6 +74,12 @@ class _TextPageState extends State<TextPage> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const ArabicSound()));
+                      }
+                      if (index == 3) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const CardPage()));
                       }
                     },
                     child: Container(

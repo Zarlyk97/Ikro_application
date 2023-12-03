@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ikro_account_student1/account_student/widgets/progress_widget.dart';
+import 'package:ikro_account_student1/account_student/widgets/volume_widget.dart';
 import 'package:svg_flutter/svg.dart';
 
 class ArabicSound extends StatefulWidget {
@@ -63,63 +64,49 @@ class _ArabicSoundState extends State<ArabicSound> {
             ),
             Row(
               children: [
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color(0xFF236681),
-                  ),
+                VolumeWidget(
                   child: SvgPicture.asset(
                     'assets/icons/volumeLittle.svg',
                   ),
                 ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color(0xFF236681),
-                  ),
+                const Gap(20),
+                VolumeWidget(
                   child: SvgPicture.asset(
                     'assets/icons/Turtle.svg',
+                    fit: BoxFit.contain,
                   ),
-                ),
+                )
               ],
             ),
             const Gap(94),
             Image.asset('assets/icons/Frame01.png'),
             const Gap(80),
-            SizedBox(
-              height: 300,
+            Expanded(
               child: ListView.builder(
-                scrollDirection: Axis.vertical,
                 itemCount: words.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                      margin: const EdgeInsets.symmetric(vertical: 10),
-                      width: 353,
-                      height: 80,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
-                        border: Border.all(
-                          color: const Color(0xFF236681),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
+                    width: 353,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      border: Border.all(
+                        color: const Color(0xFF236681),
+                      ),
+                    ),
+                    child: Center(
+                      child: Text(
+                        words[index],
+                        style: const TextStyle(
+                          color: Color(0xFF236681),
+                          fontSize: 36,
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
-                      child: Center(
-                        child: Text(
-                          words[index],
-                          style: const TextStyle(
-                            color: Color(0xFF236681),
-                            fontSize: 36,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ));
+                    ),
+                  );
                 },
               ),
             ),
