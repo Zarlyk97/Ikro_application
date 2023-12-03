@@ -40,7 +40,9 @@ class _LessonPageState extends State<LessonPage> {
               ),
               title: Text(
                 "${index++}-модуль",
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
               ),
               subtitle: const Text(
                 'Куран алиппеси',
@@ -65,7 +67,7 @@ class _LessonPageState extends State<LessonPage> {
             );
           },
           separatorBuilder: (BuildContext context, int index) => const SizedBox(
-            height: 16,
+            height: 13,
           ),
           itemCount: 10,
         ),

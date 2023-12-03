@@ -12,7 +12,6 @@ class LessonPage2 extends StatelessWidget {
         backgroundColor: const Color(0xFF236681),
         title: const Text(
           'Сабак',
-          textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white,
             fontSize: 17,
@@ -30,18 +29,19 @@ class LessonPage2 extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               tileColor: const Color(0xFF236681),
-              leading: Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white),
-                child: const Icon(
-                  Icons.border_color_outlined,
-                  size: 15,
-                  color: Color(0xFF236681),
-                ),
-              ),
+              leading: SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white),
+                    child: const Icon(
+                      Icons.border_color_outlined,
+                      size: 15,
+                      color: Color(0xFF236681),
+                    ),
+                  )),
               title: const Text(
                 "Киришүү сабагы",
                 style: TextStyle(color: Colors.white),
