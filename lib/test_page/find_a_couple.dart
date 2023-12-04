@@ -66,7 +66,7 @@ class _FindACouplePageState extends State<FindACouplePage> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 20, 20, 39),
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 39),
           child: Column(
             children: [
               const LinearProgressIndicator(
@@ -84,61 +84,40 @@ class _FindACouplePageState extends State<FindACouplePage> {
               for (int i = 0; i < words.length; i++)
                 Row(
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {});
-                      },
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        height: 80,
-                        width: 166,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: const Color(0xFF236681),
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                            child: Text(
-                          word.arabic,
-                          style: const TextStyle(
-                            color: Color(0xFF236681),
-                            fontSize: 28,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        )),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        height: 80,
-                        width: 166,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              color: const Color(0xFF236681),
-                            ),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white),
-                        child: Center(
-                            child: Text(
-                          word.kyrgyz,
-                          style: const TextStyle(
-                            color: Color(0xFF236681),
-                            fontSize: 25,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        )),
-                      ),
-                    )
+                    wordsWidget(word.arabic, () {}),
+                    wordsWidget(word.kyrgyz, () {})
                   ],
                 ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget wordsWidget(String text, void Function()? onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.all(7),
+        height: 80,
+        width: double.infinity,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+              border: Border.all(
+                color: const Color(0xFF236681),
+              ),
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.white),
+          child: Center(
+            child: Text(
+              text,
+              style: const TextStyle(
+                color: Color(0xFF236681),
+                fontSize: 25,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
           ),
         ),
       ),
