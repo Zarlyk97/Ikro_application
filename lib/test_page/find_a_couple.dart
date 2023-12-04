@@ -9,31 +9,34 @@ class FindACouplePage extends StatefulWidget {
 }
 
 class _FindACouplePageState extends State<FindACouplePage> {
-  final List<String> wordList1 = [
-    'مرحبًا',
-    'القرآن',
-    'مرحبًا',
-    'القرآن',
-    'مرحبًا',
+  List<Word> words = [
+    Word(arabic: 'مرحبًا', kyrgyz: 'мерхаба'),
+    Word(arabic: 'القرآن', kyrgyz: 'куран'),
+    Word(arabic: 'مرحبًا', kyrgyz: 'мерхаба'),
+    Word(arabic: 'مرحبًا', kyrgyz: 'мерхаба'),
+    Word(arabic: 'القرآن', kyrgyz: 'куран'),
   ];
-  final List<String> wordList2 = [
-    'мерхаба',
-    'куран',
-    'мерхаба',
-    'куран',
-    'мерхаба',
-  ];
+
   int correctCount = 0;
   int wrongCount = 0;
   List<bool> matches = [];
-  @override
-  void initState() {
-    matches = List.filled(wordList1.length, true);
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   words = [
+  //     Word(arabic: 'مرحبًا', kyrgyz: 'мерхаба'),
+  //     Word(arabic: 'القرآن', kyrgyz: 'куран'),
+  //     Word(arabic: 'مرحبًا', kyrgyz: 'мерхаба'),
+  //     Word(arabic: 'مرحبًا', kyrgyz: 'мерхаба'),
+  //     Word(arabic: 'القرآن', kyrgyz: 'куран'),
+  //   ];
+
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
+    var word = words[correctCount];
+
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
@@ -63,12 +66,7 @@ class _FindACouplePageState extends State<FindACouplePage> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(
-            top: 20,
-            right: 20,
-            left: 20,
-            bottom: 39,
-          ),
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 39),
           child: Column(
             children: [
               const LinearProgressIndicator(
@@ -83,90 +81,74 @@ class _FindACouplePageState extends State<FindACouplePage> {
               const SizedBox(
                 height: 63,
               ),
-              Row(
-                children: [
-                  Column(
-                    children: wordList1.map((word) {
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            checkMatch(0);
-                          });
-                        },
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(vertical: 10),
-                          height: 80,
-                          width: 166,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: const Color(0xFF236681),
-                              ),
-                              borderRadius: BorderRadius.circular(10),
-                              color: matches[0] ? Colors.green : Colors.red),
-                          child: Center(
-                              child: Text(
-                            word,
-                            style: const TextStyle(
-                              color: Color(0xFF236681),
-                              fontSize: 28,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          )),
+              for (int i = 0; i < words.length; i++)
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(vertical: 10),
+                        height: 80,
+                        width: 166,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: const Color(0xFF236681),
+                          ),
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
                         ),
-                      );
-                    }).toList(),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    children: wordList2.map((word) {
-                      return GestureDetector(
-                        onTap: () {
-                          checkMatch(1);
-                        },
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(vertical: 10),
-                          height: 80,
-                          width: 166,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: const Color(0xFF236681),
-                              ),
-                              borderRadius: BorderRadius.circular(10),
-                              color: matches[1] ? Colors.green : Colors.red),
-                          child: Center(
-                              child: Text(
-                            word,
-                            style: const TextStyle(
-                              color: Color(0xFF236681),
-                              fontSize: 28,
-                              fontWeight: FontWeight.w400,
+                        child: Center(
+                            child: Text(
+                          word.arabic,
+                          style: const TextStyle(
+                            color: Color(0xFF236681),
+                            fontSize: 28,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        )),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(vertical: 10),
+                        height: 80,
+                        width: 166,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              color: const Color(0xFF236681),
                             ),
-                          )),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ],
-              ),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white),
+                        child: Center(
+                            child: Text(
+                          word.kyrgyz,
+                          style: const TextStyle(
+                            color: Color(0xFF236681),
+                            fontSize: 25,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        )),
+                      ),
+                    )
+                  ],
+                ),
             ],
           ),
         ),
       ),
     );
   }
+}
 
-  void checkMatch(int index) {
-    bool isCorrect = wordList1[index] == wordList2[index];
-    if (isCorrect) {
-      correctCount++;
-      matches[index] = true;
-    } else {
-      wrongCount++;
-    }
-    setState(() {
-      matches[index] = isCorrect;
-    });
-  }
+class Word {
+  final String arabic;
+  final String kyrgyz;
+
+  Word({required this.arabic, required this.kyrgyz});
 }
