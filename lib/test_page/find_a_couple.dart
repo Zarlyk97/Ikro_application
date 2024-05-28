@@ -20,18 +20,6 @@ class _FindACouplePageState extends State<FindACouplePage> {
   int correctCount = 0;
   int wrongCount = 0;
   List<bool> matches = [];
-  // @override
-  // void initState() {
-  //   words = [
-  //     Word(arabic: 'مرحبًا', kyrgyz: 'мерхаба'),
-  //     Word(arabic: 'القرآن', kyrgyz: 'куран'),
-  //     Word(arabic: 'مرحبًا', kyrgyz: 'мерхаба'),
-  //     Word(arabic: 'مرحبًا', kyrgyz: 'мерхаба'),
-  //     Word(arabic: 'القرآن', kyrgyz: 'куран'),
-  //   ];
-
-  //   super.initState();
-  // }
 
   @override
   Widget build(BuildContext context) {

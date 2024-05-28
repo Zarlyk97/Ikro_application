@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:flutter/material.dart';
 import 'package:ikro_account_student1/presentation/pages/pages.dart';
 import 'package:ikro_account_student1/presentation/widgets/widget.dart';
@@ -18,13 +16,6 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff236681),
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          ),
-        ),
         actions: [
           IconButton(
               onPressed: () {
