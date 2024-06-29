@@ -24,6 +24,7 @@ class VideoLessonPageState extends State<VideoLessonPage> {
   @override
   void dispose() {
     flickManager.dispose();
+
     super.dispose();
   }
 
